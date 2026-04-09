@@ -106,4 +106,6 @@ If you like this project:
 - 📦 Backend (Laravel / API)  
 - 🌐 Full Deployment System  
 
+---
+
 <p align="center"> 💙 Made with Passion by Bilawal Shah 💙 </p> 
