@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FurEver Care — Products</title>
+
+   <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- AOS Animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #081630;
+      --skyblue: #87CEEB;
+      --black: #111;
+      --rose: #f9c6d0;
+      --card-bg: #0f1724; /* subtle dark */
+      --muted: #6c757d;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#f5f8fb 0%, #fbfdff 100%);
+      color: #0b0b0b;
+      /* padding-bottom: 80px; */
+    }
+
+      /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, var(--navy), var(--black));
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+  .logo{
+    height: 80px;
+    width: 100px;
+  }
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--skyblue) !important;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+    }
+    .navbar-nav .nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin: 0 4px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      color: #fff !important;
+    }
+    .navbar-nav .nav-link:hover {
+      background: var(--skyblue);
+      color: var(--black) !important;
+      transform: translateY(-2px);
+    }
+    .navbar-nav .nav-link.active {
+      background: rgba(249,198,208,0.25);
+      color: var(--skyblue) !important;
+      font-weight: 600;
+    }
+    /* Hero */
+  .hero {
+  position: relative;
+  width: 100%;          /* full width */
+  min-height: 100vh;    /* full height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+
+  background: linear-gradient(180deg, rgba(8,22,48,0.92), rgba(8,22,48,0.6)), 
+              url('/images/hero section.jpg') no-repeat center center;
+  background-size: cover;     /* full cover kare */
+  background-position: center;
+  background-attachment: fixed;
+  margin: 0;                  /* koi margin na ho */
+  padding: 0;                 /* koi padding na ho */
+}
+
+    .hero .title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .hero .subtitle { color: rgba(255,255,255,0.9); margin-top: 6px; }
+
+    /* Controls */
+    .controls .form-control, .controls .form-select {
+      border-radius: 999px;
+      padding: .5rem 1rem;
+    }
+    .controls .input-group .btn {
+      border-radius: 999px;
+      background: var(--skyblue);
+      color: var(--black);
+      border: none;
+      font-weight: 600;
+    }
+
+    /* Category pills */
+    .category-pill {
+      border-radius: 999px;
+      padding: 8px 14px;
+      cursor: pointer;
+      background: rgba(255,255,255,0.9);
+      transition: all .18s;
+      border: 1px solid rgba(0,0,0,0.06);
+      font-weight: 600;
+    }
+    .category-pill.active {
+      background: linear-gradient(90deg,var(--skyblue), #bfeeff);
+      color: var(--black);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(8,22,48,0.12);
+    }
+
+    /* Product cards */
+    .product-card {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform .22s ease, box-shadow .22s;
+      background: #fff;
+      box-shadow: 0 6px 20px rgba(10,20,35,0.06);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 14px 40px rgba(8,22,48,0.12); }
+    .product-card .img-wrap {
+      height: 180px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #f7fafc 0%, #eef6fb 100%);
+    }
+    .product-card img { width: 100%; height: 100%; object-fit: cover; display:block; }
+    .product-body { padding: 14px; flex: 1 1 auto; display:flex; flex-direction: column; }
+    .product-title { font-size: 1rem; font-weight: 700; margin-bottom: .25rem; }
+    .product-desc { color: var(--muted); font-size: .9rem; flex: 1 1 auto; margin-bottom: .75rem; }
+    .product-price { font-weight: 800; color: var(--navy); font-size: 1.05rem; }
+
+    .card-actions { margin-top: 10px; display:flex; gap:8px; }
+
+    /* Buy button */
+    .btn-buy {
+      background: linear-gradient(90deg,var(--skyblue), #a8e8ff);
+      border: none;
+      color: var(--black);
+      font-weight: 700;
+      border-radius: 10px;
+    }
+    .btn-fav {
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: #fff;
+      color: var(--navy);
+    }
+
+    /* Empty results */
+    .no-results {
+      text-align: center;
+      padding: 36px;
+      color: var(--muted);
+    }
+ /* Footer */
+    footer a {
+      color: var(--skyblue);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    .social-icons a {
+      color: var(--skyblue);
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #fff;
+      transform: scale(1.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .feature-card {
+        padding: 20px;
+      }
+    }
+
+   .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+      background: url('/images/hero section.jpg') no-repeat center/cover;
+      background-attachment: fixed;
+      /* parallax effect */
+    }
+    /* Fast Shipping Badge Position */
+.fast-shipping {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 3;
+}
+
+/* Optional: Make it responsive */
+@media (max-width: 768px) {
+  .fast-shipping {
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 31, 68, 0.7);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.hero-btn {
+  background: #87CEEB;
+  color: #111;
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 30px;
+  transition: 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.hero-btn:hover {
+  background: #f9c6d0;
+  transform: translateY(-3px) scale(1.05);
+}
+
+.paw-prints {
+  margin-top: 25px;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  color: #fff;
+  opacity: 0.8;
+  animation: pawBounce 1.5s infinite alternate;
+}
+
+@keyframes pawBounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+.floating-pet {
+  position: absolute;
+  width: 80px;
+  animation: float 6s ease-in-out infinite;
+  z-index: 1;
+}
+
+.floating-pet.cat { top: 20%; left: 10%; }
+.floating-pet.dog { top: 50%; left: 80%; }
+.floating-pet.bird { top: 30%; left: 50%; }
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 2rem; }
+  .hero-subtitle { font-size: 1rem; }
+  .floating-pet { width: 50px; }
+}
+  </style>
+</head>
+<body>
+
+
+<!-- ✅ Navbar -->
+ <!--Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+  <img src="images/New folder/logo/logo 2.png" alt="FurEver Care Logo" height="50" width="100" class="me-2">
+  <i class="bi text-warning me-1"></i>
+  FurEver Care
+</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link " href="index.html"> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html"> About Us</a></li>
+          <li class="nav-item"><a class="nav-link active" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="pet-care.html">Pet Care</a></li>
+          <li class="nav-item"><a class="nav-link" href="emergency.html"> Emergency</a></li>
+          <li class="nav-item"><a class="nav-link" href="shelter.html"> Shelter</a></li>
+          <li class="nav-item"><a class="nav-link" href="feedback.html"> Feedback</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<!-- Hero Section (Updated) -->
+<section class="hero">
+  <!-- Floating Pets -->
+  <img src="images/hero cat png" alt="Cat" class="floating-pet cat" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1500">
+  <img src="images/hero dog" alt="Dog" class="floating-pet dog" data-aos="fade-right" data-aos-delay="400" data-aos-duration="1500">
+  <!-- <img src="images/hero-bird.png" alt="Bird" class="floating-pet bird" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1500"> -->
+
+  <div class="hero-content">
+    <h1 class="hero-title" data-aos="fade-down" data-aos-delay="400">Premium Pet Products — curated for your FurEver family 🐾</h1>
+    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="600">Your one-stop solution for Pet Owners, Veterinarians, and Shelters.</p>
+    <a href="#shop" class="hero-btn" data-aos="zoom-in" data-aos-delay="800">Shop Now</a>
+    <div class="paw-prints" data-aos="fade-up" data-aos-delay="1000">
+      <i class="bi bi-paw"></i>
+      <i class="bi bi-paw"></i>
+      <i class="bi bi-paw"></i>
+    </div>
+  </div>
+
+  <!-- Fast Shipping Badge -->
+  <div class="fast-shipping">
+    <div style="display:inline-block; text-align:left; background:rgba(255,255,255,0.06); padding:14px 18px; border-radius:12px;">
+      <div style="font-weight:700; color: #fff">Fast Shipping</div>
+      <div style="color: rgba(255,255,255,0.85); font-size:.92rem">Delivered safely to your doorstep</div>
+    </div>
+  </div>
+</section>
+    <!-- HERO -->
+    <!-- <section class="hero px-4 py-5">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <h1 class="title">Premium Pet Products — curated for your FurEver family</h1>
+          <p class="subtitle mb-3">Explore food, toys, grooming essentials, comfy bedding, and health supplements — all handpicked to keep pets healthy & happy.</p> -->
+
+          <!-- <div class="d-flex gap-2 controls flex-wrap">
+            <div class="input-group me-2" style="max-width:520px;">
+              <span class="input-group-text bg-white border-0"><i class="bi bi-search"></i></span>
+              <input id="searchInput" class="form-control" placeholder="Search products or keywords..." aria-label="Search products">
+              <button id="clearSearch" class="btn d-none">Clear</button>
+            </div>
+
+            <select id="categorySelect" class="form-select" style="max-width:220px;">
+              <option value="all">All Categories</option>
+              <option value="Dog/Cat Food">Dog / Cat Food</option>
+              <option value="Toys">Toys</option>
+              <option value="Grooming Essentials">Grooming Essentials</option>
+              <option value="Bedding and Apparel">Bedding & Apparel</option>
+              <option value="Health Supplements">Health Supplements</option>
+            </select>
+
+            <select id="sortSelect" class="form-select" style="max-width:200px;">
+              <option value="featured">Sort: Featured</option>
+              <option value="price-asc">Price: Low → High</option>
+              <option value="price-desc">Price: High → Low</option>
+            </select>
+          </div>
+        </div> -->
+
+        <!-- <div class="col-lg-5 text-lg-end mt-4 mt-lg-0">
+          <div style="display:inline-block; text-align:left; background:rgba(255,255,255,0.06); padding:14px 18px; border-radius:12px;">
+            <div style="font-weight:700; color: #fff">Fast Shipping</div>
+            <div style="color: rgba(255,255,255,0.85); font-size:.92rem">Delivered safely to your doorstep</div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+  <main class="container"  id="shop"><br>
+
+<h1 class="hero-title" data-aos="fade-down" data-aos-delay="400" align="center">Shop Our Products</h1>
+    <!-- Category Pills (quick filter) -->
+     <div>
+      <div class="d-flex gap-2 controls flex-wrap">
+            <div class="input-group me-2" style="max-width:520px;">
+              <span class="input-group-text bg-white border-0"><i class="bi bi-search"></i></span>
+              <input id="searchInput" class="form-control" placeholder="Search products or keywords..." aria-label="Search products">
+              <button id="clearSearch" class="btn d-none">Clear</button>
+            </div>
+
+            <select id="categorySelect" class="form-select" style="max-width:220px;">
+              <option value="all">All Categories</option>
+              <option value="Dog/Cat Food">Dog / Cat Food</option>
+              <option value="Toys">Toys</option>
+              <option value="Grooming Essentials">Grooming Essentials</option>
+              <option value="Bedding and Apparel">Bedding & Apparel</option>
+              <option value="Health Supplements">Health Supplements</option>
+            </select>
+
+            <select id="sortSelect" class="form-select" style="max-width:200px;">
+              <option value="featured">Sort: Featured</option>
+              <option value="price-asc">Price: Low → High</option>
+              <option value="price-desc">Price: High → Low</option>
+            </select>
+          </div>
+        </div>
+     </div>
+    <div class="py-3 d-flex gap-2 flex-wrap align-items-center">
+      <button class="category-pill active" data-cat="all">All</button>
+      <button class="category-pill" data-cat="Dog/Cat Food">Dog / Cat Food</button>
+      <button class="category-pill" data-cat="Toys">Toys</button>
+      <button class="category-pill" data-cat="Grooming Essentials">Grooming Essentials</button>
+      <button class="category-pill" data-cat="Bedding and Apparel">Bedding & Apparel</button>
+      <button class="category-pill" data-cat="Health Supplements">Health Supplements</button>
+    </div>
+
+    <!-- Products Grid -->
+    <section>
+      <div id="productGrid" class="row g-4">
+        <!-- Cards inserted dynamically -->
+      </div>
+
+      <div id="noResults" class="no-results d-none">
+        <h5>No products found</h5>
+        <p>Try adjusting your search or filters.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Buy Modal (non-functional buy) -->
+  <div class="modal fade" id="buyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+      <div class="modal-content">
+        <div class="modal-header" style="background: var(--navy); color: var(--skyblue);">
+          <h5 class="modal-title">Buy Product</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="buyDetail">
+            <!-- filled by JS -->
+            <div class="d-flex gap-3">
+              <div style="width:120px; flex-shrink:0;">
+                <img id="buyImage" src="" alt="" style="width:100%; border-radius:8px; object-fit:cover;">
+              </div>
+              <div>
+                <h6 id="buyName" class="mb-1"></h6>
+                <div id="buyDesc" class="text-muted mb-2" style="font-size:.95rem"></div>
+                <div class="fw-bold product-price" id="buyPrice"></div>
+              </div>
+            </div>
+
+            <hr class="my-3">
+
+            <div class="mb-3">
+              <label class="form-label">Quantity</label>
+              <input id="buyQty" type="number" min="1" value="1" class="form-control" style="max-width:120px;">
+            </div>
+
+            <div class="text-end">
+              <button class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
+              <button id="confirmBuy" class="btn btn-buy">Proceed (demo)</button>
+            </div>
+          </div>
+
+          <div id="buySuccess" class="d-none text-center py-4">
+            <div class="mb-2" style="font-size:1.6rem">✅</div>
+            <h5>Order noted (demo)</h5>
+            <p class="text-muted">This is a demo: no payment is processed. We'll redirect you to a thank-you mock screen.</p>
+            <div class="mt-3">
+              <button class="btn btn-theme" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!--Footer -->
+
+  <footer class="pt-5 pb-3" style="background: linear-gradient(90deg, #000000, #001f3f); color: #87CEFA;">
+    <div class="container">
+      <div class="row text-start">
+
+        <!--About -->
+        <div class="col-md-3 mb-4">
+          <div class="mb-2 d-flex align-items-center gap-2">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+  <img src="images/New folder/logo/logo 2.png" alt="FurEver Care Logo" height="50" width="100" class="me-2">
+  <!-- <i class="bi text-warning me-1"></i> -->
+  FurEver Care
+</a>
+          </div>
+          <p class="small mt-2">
+            The best overall dog DNA test. Embark Breed & Health Kit which provides complete dog care.
+          </p>
+        </div>
+
+        <!-- First Link Column -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold text-white mb-3">Company</h6>
+          <ul class="list-unstyled small">
+            <li><a href="about.html" class="text-light text-decoration-none">About Us</a></li>
+            <li><a href="products.html" class="text-light text-decoration-none">Products</a></li>
+            <li><a href="pet-care.html" class="text-light text-decoration-none">Pet Care</a></li>
+            <li><a href="emergency.html" class="text-light text-decoration-none">Emergency & Veterinarian</a></li>
+            <li><a href="shelter.html" class="text-light text-decoration-none">Shelter</a></li>
+          </ul>
+        </div>
+
+        <!-- Second Link Column -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold text-white mb-3">Resources</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#" class="text-light text-decoration-none">Invoicing Platform</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Accounting Platform</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Calculator</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Course Proposal</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Contracts</a></li>
+          </ul>
+        </div>
+
+        <!-- Instagram Preview -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold text-white mb-3">Social links</h6>
+          <div class="d-flex gap-2 mt-3">
+            <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border-color: rgba(255, 255, 255, 0.2);">
+
+      <!-- Bottom Line -->
+      <div class="text-center small mt-3">
+        <p class="mb-1">© 2025 FurEver Care | Designed for Aptech Project</p>
+        <p>Made by <i class="bi text-warning"></i> Syed Muhammad Bilawal Ali</p>
+        <a href="#" class="btn btn-sm btn-outline-light mt-2" onclick="window.scrollTo({top:0, behavior:'smooth'});">
+          Back to Top ↑
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // ------------------------------
+    // Demo product JSON (dynamic)
+    // ------------------------------
+    const products = [
+      // Dog/Cat Food
+      { id:1, name:"Complete Adult Dog Food - Chicken", desc:"Balanced nutrition for adult dogs. Real chicken, prebiotics & omegas.", price:1850, category:"Dog/Cat Food", img:"https://image.chewy.com/catalog/general/images/moe/069c197d-fe1c-78b2-8000-7c674ac1e7fd._AC_SX500_SY400_QL75_V1_.jpg" },
+      { id:2, name:"Kitten Growth Formula", desc:"Vitamins and DHA for strong growth in kittens.", price:1299, category:"Dog/Cat Food", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDa35a44lhw3pBFTxB1fanG-DrF9ua_4Shsg&s" },
+
+      // Toys
+      { id:3, name:"Squeaky Plush Toy (Durable)", desc:"Soft plush with reinforced seams and squeaker.", price:499, category:"Toys", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1L26gs0Ex8C-_Lod-X2vUXhJdxXVg8MTsMA&s" },
+      { id:4, name:"Interactive Laser Cat Toy", desc:"Automatic rotating laser to keep cats active.", price:799, category:"Toys", img:"https://www.radiofence.com/assets/images/product_images/m/456/PTY00_14244__32835.jpg" },
+
+      // Grooming Essentials
+      { id:5, name:"Gentle Pet Shampoo - 250ml", desc:"Tear-free, skin-soothing formula for all breeds.", price:650, category:"Grooming Essentials", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbR9rDQ1af-JtTjJMR60S7-L26eadImIFDHA&s" },
+      { id:6, name:"Slicker Brush - Multi-size", desc:"Removes loose fur, reduces shedding.", price:349, category:"Grooming Essentials", img:"https://www.petedge.com/media/catalog/product/m/f/mf120_default.jpg?quality=80&fit=bounds&height=600&width=600&canvas=600:600" },
+
+      // Bedding & Apparel
+      { id:7, name:"Orthopedic Cozy Bed (Large)", desc:"Memory foam support bed for older pets.", price:3999, category:"Bedding and Apparel", img:"https://snoozerpetproducts.com/wp-content/uploads/2014/05/orthopedic-cozy-cave-lifestyle2-olive.jpg" },
+      { id:8, name:"Cooling Mat for Summer", desc:"Keeps pets cool on hot days. No refrigeration required.", price:1099, category:"Bedding and Apparel", img:"https://lokianddaisy.com/cdn/shop/files/lokianddaisypetcoolingmat3.png?v=1774704461" },
+
+      // Health Supplements
+      { id:9, name:"Joint Care Chewables - 60pcs", desc:"Glucosamine & chondroitin for joint support.", price:1599, category:"Health Supplements", img:"https://broadreachnature.com/wp-content/uploads/2018/11/Joint-60-600x720.jpg" },
+      { id:10, name:"Probiotic Powder for Pets", desc:"Supports digestion & immunity. Mix with food.", price:899, category:"Health Supplements", img:"https://www.pethonesty.com/cdn/shop/files/JarMockup_AMZ_Simplified_ProbioticsPowder_Treats.png?v=1712670930" }
+    ];
+
+    // state
+    let state = {
+      query: '',
+      category: 'all',
+      sort: 'featured'
+    };
+
+    // DOM refs
+    const productGrid = document.getElementById('productGrid');
+    const searchInput = document.getElementById('searchInput');
+    const categorySelect = document.getElementById('categorySelect');
+    const sortSelect = document.getElementById('sortSelect');
+    const noResults = document.getElementById('noResults');
+    const categoryPills = document.querySelectorAll('.category-pill');
+
+    // render products according to state
+    function renderProducts() {
+      // filter by category
+      let filtered = products.filter(p => {
+        if (state.category !== 'all' && p.category !== state.category) return false;
+        if (state.query) {
+          const q = state.query.toLowerCase();
+          return (p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
+        }
+        return true;
+      });
+
+      // sort
+      if (state.sort === 'price-asc') filtered.sort((a,b) => a.price - b.price);
+      else if (state.sort === 'price-desc') filtered.sort((a,b) => b.price - a.price);
+      // else featured default order
+
+      productGrid.innerHTML = '';
+      if (filtered.length === 0) {
+        noResults.classList.remove('d-none');
+        return;
+      } else {
+        noResults.classList.add('d-none');
+      }
+
+      // build card HTML
+      filtered.forEach(p => {
+        const col = document.createElement('div');
+        col.className = 'col-12 col-sm-6 col-md-4 col-lg-3';
+
+        col.innerHTML = `
+          <div class="product-card">
+            <div class="img-wrap">
+              <img src="${p.img}" alt="${escapeHtml(p.name)}">
+            </div>
+            <div class="product-body">
+              <div class="product-title">${escapeHtml(p.name)}</div>
+              <div class="product-desc">${escapeHtml(p.desc)}</div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="product-price">Rs. ${numberWithCommas(p.price)}</div>
+                <div class="card-actions">
+                  <button class="btn btn-fav btn-sm" title="Add to favorites" onclick="handleFav(${p.id}, this)"><i class="bi bi-heart"></i></button>
+                  <button class="btn btn-buy btn-sm" onclick="openBuy(${p.id})"><i class="bi bi-bag-fill me-1"></i>Buy</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        productGrid.appendChild(col);
+      });
+    }
+
+    // initial render
+    renderProducts();
+
+    // helpers
+    function numberWithCommas(x){ return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+    function escapeHtml(str){ return (str+'').replace(/[&<>"']/g, (m)=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m])); }
+
+    // search event
+    searchInput.addEventListener('input', e => {
+      state.query = e.target.value.trim();
+      renderProducts();
+    });
+
+    // category select
+    categorySelect.addEventListener('change', e => {
+      state.category = e.target.value;
+      // sync pills
+      categoryPills.forEach(btn => btn.classList.toggle('active', btn.dataset.cat === state.category || (state.category === 'all' && btn.dataset.cat === 'all')));
+      renderProducts();
+    });
+
+    // sort
+    sortSelect.addEventListener('change', e => {
+      state.sort = e.target.value;
+      renderProducts();
+    });
+
+    // pills click
+    categoryPills.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.cat;
+        state.category = cat;
+        categorySelect.value = cat;
+        categoryPills.forEach(b => b.classList.toggle('active', b === btn));
+        renderProducts();
+      });
+    });
+
+    // FAVORITES (demo)
+    function handleFav(id, btn){
+      btn.classList.add('text-danger');
+      btn.innerHTML = '<i class="bi bi-heart-fill"></i>';
+      // Demo-only: no persistent storage
+      setTimeout(()=>{ btn.classList.remove('text-danger'); btn.innerHTML = '<i class="bi bi-heart-fill"></i>'; }, 900);
+    }
+
+    // BUY modal
+    const buyModal = new bootstrap.Modal(document.getElementById('buyModal'));
+    function openBuy(id){
+      const p = products.find(x=>x.id===id);
+      if(!p) return;
+      document.getElementById('buyImage').src = p.img;
+      document.getElementById('buyName').innerText = p.name;
+      document.getElementById('buyDesc').innerText = p.desc;
+      document.getElementById('buyPrice').innerText = 'Rs. ' + numberWithCommas(p.price);
+      document.getElementById('buyQty').value = 1;
+      document.getElementById('buyDetail').classList.remove('d-none');
+      document.getElementById('buySuccess').classList.add('d-none');
+      buyModal.show();
+    }
+
+    document.getElementById('confirmBuy').addEventListener('click', function(){
+      // demo: show success panel
+      document.getElementById('buyDetail').classList.add('d-none');
+      document.getElementById('buySuccess').classList.remove('d-none');
+    });
+
+    // Keyboard accessibility: Enter triggers search
+    searchInput.addEventListener('keyup', e => {
+      if(e.key === 'Enter') renderProducts();
+    });
+
+    // initial: keep category pills consistent
+    (function syncPills(){
+      categoryPills.forEach(btn => btn.classList.toggle('active', btn.dataset.cat === 'all'));
+    })();
+ AOS.init();
+
+    // Newsletter capture
+    function captureEmail(e) {
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail').value;
+      document.getElementById('newsletterMsg').innerText =
+        `✅ Thank you! ${email} has been subscribed.`;
+      e.target.reset();
+    }
+
+    AOS.init({
+      duration: 1200,
+      easing: 'ease-in-out',
+      once: true
+    });
+    // Initialize AOS
+    AOS.init({ once: true, duration: 1000 });
+
+    // Floating Paw Click Effect
+    document.addEventListener('click', e => {
+      const paw = document.createElement('div');
+      paw.textContent = '🐾';
+      paw.style.position = 'absolute';
+      paw.style.left = `${e.pageX}px`;
+      paw.style.top = `${e.pageY}px`;
+      paw.style.fontSize = '24px';
+      paw.style.animation = 'fadeUp 1s ease forwards';
+      document.body.appendChild(paw);
+      setTimeout(() => paw.remove(), 1000);
+    });
+
+    // Paw animation keyframe
+    const style = document.createElement('style');
+    style.textContent = `
+    @keyframes fadeUp {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-40px); }
+    }
+  `;
+    document.head.appendChild(style);
+
+    // Floating Pets Interactions
+    document.querySelectorAll('.floating-pet').forEach(pet => {
+      pet.addEventListener('click', () => {
+        alert(`Hi! I'm a friendly ${pet.alt}! 🐾`);
+      });
+      pet.addEventListener('mouseenter', () => {
+        pet.style.transform = 'scale(1.2)';
+        pet.style.transition = '0.3s';
+      });
+      pet.addEventListener('mouseleave', () => {
+        pet.style.transform = 'scale(1)';
+      });
+    });
+
+    // Typewriter Effect (Hero Title)
+    const heroTitle = document.querySelector('.hero-title');
+    const originalText = heroTitle.textContent;
+    heroTitle.textContent = '';
+    let idx = 0;
+    function type() {
+      if (idx < originalText.length) {
+        heroTitle.textContent += originalText.charAt(idx);
+        idx++;
+        setTimeout(type, 70);
+      }
+    }
+    setTimeout(type, 500);
+
+    // Back to Top Button
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backBtn.style.display = window.scrollY > 400 ? 'inline-block' : 'none';
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      backBtn.style.display = 'none';
+    });
+
+    // Page Fade-In on Load
+    // document.body.style.opacity = 0;
+    // document.body.style.transition = 'opacity 1s ease';
+    // window.addEventListener('load', () => {
+    //   document.body.style.opacity = 1;
+    // });
+
+    //Social Icons Spin
+    document.querySelectorAll('.social-icons a').forEach(icon => {
+      icon.addEventListener('click', e => {
+        e.preventDefault(); // prevent default nav
+        icon.style.transition = 'transform 0.6s';
+        icon.style.transform = 'rotate(360deg)';
+        setTimeout(() => {
+          icon.style.transform = 'rotate(0deg)';
+        }, 600);
+      });
+    });
+
+    // CTA Button Pulse Effect
+    const ctaBtn = document.querySelector('.cta-banner .btn');
+    ctaBtn.addEventListener('mouseenter', () => {
+      ctaBtn.style.transform = 'scale(1.08)';
+      ctaBtn.style.transition = 'transform 0.3s ease';
+    });
+    ctaBtn.addEventListener('mouseleave', () => {
+      ctaBtn.style.transform = 'scale(1)';
+    });
+
+    document.querySelectorAll('.floating-pet').forEach(pet => {
+  pet.addEventListener('click', () => { alert(`Hi! I'm a friendly ${pet.alt}! 🐾`); });
+  pet.addEventListener('mouseenter', () => { pet.style.transform = 'scale(1.2)'; pet.style.transition = '0.3s'; });
+  pet.addEventListener('mouseleave', () => { pet.style.transform = 'scale(1)'; });
+});
+
+  </script>
+
+</body>
+</html>

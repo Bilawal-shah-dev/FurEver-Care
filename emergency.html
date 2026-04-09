@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetCare - Emergency Contacts</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- AOS Animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #081630;
+      --skyblue: #87CEEB;
+      --black: #111;
+      --rose: #f9c6d0;
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      /* background-color: var(--rose); */
+    }
+
+    /* Promo Banner */
+    .promo-banner {
+      background: var(--navy);
+      color: var(--skyblue);
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, var(--navy), var(--black));
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--skyblue) !important;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .navbar-nav .nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin: 0 4px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      color: #fff !important;
+    }
+
+    .navbar-nav .nav-link:hover {
+      background: var(--skyblue);
+      color: var(--black) !important;
+      transform: translateY(-2px);
+    }
+
+    .navbar-nav .nav-link.active {
+      background: rgba(249, 198, 208, 0.25);
+      color: var(--skyblue) !important;
+      font-weight: 600;
+    }
+
+    /* Emergency Section */
+    .emergency-section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .emergency-section h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+
+    .emergency-section p {
+      color: var(--black);
+    }
+
+    .table {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .table th {
+      background-color: var(--navy);
+      color: var(--skyblue);
+    }
+
+    .table td {
+      color: var(--black);
+    }
+
+    /* Doctor Cards */
+    .doctor-card {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+      background: #fff;
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .doctor-card img {
+      height: 220px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .doctor-card .card-body {
+      text-align: center;
+    }
+
+    .doctor-card h5 {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .doctor-card p {
+      color: var(--black);
+    }
+
+    .doctor-card .btn {
+      background: var(--skyblue);
+      color: var(--black);
+      border-radius: 25px;
+      padding: 12px 30px;
+      font-weight: 600;
+    }
+
+    .custom-appointment-btn {
+      background-color: var(--skyblue);
+      color: var(--black);
+      border: none;
+      padding: 8px 18px;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .custom-appointment-btn:hover {
+      background-color: #6bb8d6;
+      /* slightly darker sky blue */
+      transform: translateY(-2px);
+      color: var(--navy);
+    }
+
+
+
+    /* Footer */
+    /* Footer */
+    footer a {
+      color: var(--skyblue);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    .social-icons a {
+      color: var(--skyblue);
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #fff;
+      transform: scale(1.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .feature-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <!-- Navbar -->
+  <!--Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+  <img src="images/New folder/logo/logo 2.png" alt="FurEver Care Logo" height="50" width="100" class="me-2">
+  <i class="bi text-warning me-1"></i>
+  FurEver Care
+</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link " href="index.html"> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html"> About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="pet-care.html">Pet Care</a></li>
+          <li class="nav-item"><a class="nav-link active" href="emergency.html"> Emergency</a></li>
+          <li class="nav-item"><a class="nav-link" href="shelter.html"> Shelter</a></li>
+          <li class="nav-item"><a class="nav-link" href="feedback.html"> Feedback</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Promo Banner -->
+  <div class="promo-banner">
+    🚨 Emergency Contacts - Save Emergency Numbers for Your Pet's Safety! 🚨
+  </div>
+
+  <!-- Veterinarian Profiles -->
+  <div class="container mt-5">
+    <h2 class="section-title text-center fw-bold">Our Veterinarians</h2>
+    <div class="row">
+
+      <!-- Doctor Cards from second file -->
+      <!-- Doctor 1 -->
+      <div class="col-md-4 mb-4">
+        <div class="card p-3">
+          <img src="images/Veterinarians/Sarah Veterinarians.jpeg" class="card-img-top doctor-img mb-4" alt="Vet 1" />
+          <h5>Dr. Sarah Johnson</h5>
+          <p><strong>Specialization:</strong> Dogs & Cats</p>
+          <p><strong>Contact:</strong> +92 300 1234567</p>
+          <p><strong>Can Handle:</strong></p>
+          <ul class="case-list">
+            <li>Vaccinations</li>
+            <li>General Checkups</li>
+          </ul>
+          <p><strong>Past Cases:</strong></p>
+          <ul class="case-list">
+            <li>Dog poisoning (Chocolate)</li>
+            <li>Cat surgery (Fracture)</li>
+          </ul>
+          <button class="btn btn-sm custom-appointment-btn mt-2" onclick="openAppointment('Dr. Sarah Johnson')">Book
+            Appointment</button>
+        </div>
+      </div>
+
+      <!-- Doctor 2 -->
+      <div class="col-md-4 mb-4">
+        <div class="card p-3">
+          <img src="images/Veterinarians/Ahmed Veterinarians.jpeg" class="card-img-top doctor-img mb-4" alt="Vet 2" />
+          <h5>Dr. Ahmed Khan</h5>
+          <p><strong>Specialization:</strong> Exotic Pets</p>
+          <p><strong>Contact:</strong> +92 300 2233445</p>
+          <p><strong>Can Handle:</strong></p>
+          <ul class="case-list">
+            <li>Reptile Treatments</li>
+            <li>Exotic Birds</li>
+          </ul>
+          <p><strong>Past Cases:</strong></p>
+          <ul class="case-list">
+            <li>Snake dehydration case</li>
+            <li>Parrot broken wing recovery</li>
+          </ul>
+          <button class="btn btn-sm custom-appointment-btn mt-2" onclick="openAppointment('Dr. Ahmed Khan')">Book
+            Appointment</button>
+        </div>
+      </div>
+
+      <!-- Doctor 3 -->
+      <div class="col-md-4 mb-4">
+        <div class="card p-3">
+          <img src="images/Veterinarians/Maria Veterinarians.jpeg" class="card-img-top doctor-img mb-4" alt="Vet 3">
+          <h5>Dr. Maria Ali</h5>
+          <p><strong>Specialization:</strong> Birds & Small Animals</p>
+          <p><strong>Contact:</strong> +92 300 3344556</p>
+          <p><strong>Can Handle:</strong></p>
+          <ul class="case-list">
+            <li>Bird Injuries</li>
+            <li>Hamster Health</li>
+          </ul>
+          <p><strong>Past Cases:</strong></p>
+          <ul class="case-list">
+            <li>Finch disease outbreak control</li>
+            <li>Hamster dental surgery</li>
+          </ul> 
+
+          <button class="btn btn-sm custom-appointment-btn mt-2" onclick="openAppointment('Dr. Maria Ali')">Book
+            Appointment</button>
+        </div>
+      </div>
+      <br>
+      <!-- Appointment Form Modal -->
+      <div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="appointmentModalLabel">Book Appointment</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="appointmentForm">
+                <div class="mb-3">
+                  <label for="doctorName" class="form-label">Doctor</label>
+                  <input type="text" class="form-control" id="doctorName" name="doctorName" readonly>
+                </div>
+                <div class="mb-3">
+                  <label for="ownerName" class="form-label">Your Name</label>
+                  <input type="text" class="form-control" id="ownerName" name="ownerName" required>
+                </div>
+                <div class="mb-3">
+                  <label for="petType" class="form-label">Pet Type</label>
+                  <select class="form-select" id="petType" name="petType" required>
+                    <option value="">Select Pet Type</option>
+                    <!-- Options will be populated dynamically -->
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="appointmentDate" class="form-label">Date</label>
+                  <input type="date" class="form-control" id="appointmentDate" name="appointmentDate" required>
+                </div>
+                <div class="mb-3">
+                  <label for="appointmentTime" class="form-label">Time</label>
+                  <input type="time" class="form-control" id="appointmentTime" name="appointmentTime" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-------------------------- Emergency Section -->
+      <section class="emergency-section container">
+        <h2>🚑 Emergency Contact Numbers</h2>
+        <p>If your pet is in urgent need of medical attention, call one of the numbers below immediately:</p>
+
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Contact Number</th>
+                <th>Availability</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>24/7 Veterinary Hospital</td>
+                <td>+92 300 1234567</td>
+                <td>24/7</td>
+              </tr>
+              <tr>
+                <td>Animal Rescue Service</td>
+                <td>+92 311 9876543</td>
+                <td>24/7</td>
+              </tr>
+              <tr>
+                <td>Pet Poison Helpline</td>
+                <td>+92 322 5551122</td>
+                <td>24/7</td>
+              </tr>
+              <tr>
+                <td>Emergency Ambulance (Pets)</td>
+                <td>+92 333 4433221</td>
+                <td>Day & Night</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+ <!--Footer -->
+
+  <footer class="pt-5 pb-3" style="background: linear-gradient(90deg, #000000, #001f3f); color: #87CEFA;">
+    <div class="container">
+      <div class="row text-start">
+
+        <!--About -->
+        <div class="col-md-3 mb-4">
+          <div class="mb-2 d-flex align-items-center gap-2">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+  <img src="images/New folder/logo/logo 2.png" alt="FurEver Care Logo" height="50" width="100" class="me-2">
+  <!-- <i class="bi text-warning me-1"></i> -->
+  FurEver Care
+</a>
+          </div>
+          <p class="small mt-2">
+            The best overall dog DNA test. Embark Breed & Health Kit which provides complete dog care.
+          </p>
+        </div>
+
+        <!-- First Link Column -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold text-white mb-3">Company</h6>
+          <ul class="list-unstyled small">
+            <li><a href="about.html" class="text-light text-decoration-none">About Us</a></li>
+            <li><a href="products.html" class="text-light text-decoration-none">Products</a></li>
+            <li><a href="pet-care.html" class="text-light text-decoration-none">Pet Care</a></li>
+            <li><a href="emergency.html" class="text-light text-decoration-none">Emergency & Veterinarian</a></li>
+            <li><a href="shelter.html" class="text-light text-decoration-none">Shelter</a></li>
+          </ul>
+        </div>
+
+        <!-- Second Link Column -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold text-white mb-3">Resources</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#" class="text-light text-decoration-none">Invoicing Platform</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Accounting Platform</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Calculator</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Course Proposal</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Contracts</a></li>
+          </ul>
+        </div>
+
+        <!-- Instagram Preview -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold text-white mb-3">Social links</h6>
+          <div class="d-flex gap-2 mt-3">
+            <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border-color: rgba(255, 255, 255, 0.2);">
+
+      <!-- Bottom Line -->
+      <div class="text-center small mt-3">
+        <p class="mb-1">© 2025 FurEver Care | Designed for Aptech Project</p>
+        <p>Made by <i class="bi text-warning"></i> Syed Muhammad Bilawal Ali</p>
+        <a href="#" class="btn btn-sm btn-outline-light mt-2" onclick="window.scrollTo({top:0, behavior:'smooth'});">
+          Back to Top ↑
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+       AOS.init();
+
+    // Newsletter capture
+    function captureEmail(e) {
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail').value;
+      document.getElementById('newsletterMsg').innerText =
+        `✅ Thank you! ${email} has been subscribed.`;
+      e.target.reset();
+    }
+
+    AOS.init({
+      duration: 1200,
+      easing: 'ease-in-out',
+      once: true
+    });
+    // Initialize AOS
+    AOS.init({ once: true, duration: 1000 });
+
+    // Floating Paw Click Effect
+    document.addEventListener('click', e => {
+      const paw = document.createElement('div');
+      paw.textContent = '🐾';
+      paw.style.position = 'absolute';
+      paw.style.left = `${e.pageX}px`;
+      paw.style.top = `${e.pageY}px`;
+      paw.style.fontSize = '24px';
+      paw.style.animation = 'fadeUp 1s ease forwards';
+      document.body.appendChild(paw);
+      setTimeout(() => paw.remove(), 1000);
+    });
+
+    // Paw animation keyframe
+    const style = document.createElement('style');
+    style.textContent = `
+    @keyframes fadeUp {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-40px); }
+    }
+  `;
+    document.head.appendChild(style);
+
+    // Floating Pets Interactions
+    document.querySelectorAll('.floating-pet').forEach(pet => {
+      pet.addEventListener('click', () => {
+        alert(`Hi! I'm a friendly ${pet.alt}! 🐾`);
+      });
+      pet.addEventListener('mouseenter', () => {
+        pet.style.transform = 'scale(1.2)';
+        pet.style.transition = '0.3s';
+      });
+      pet.addEventListener('mouseleave', () => {
+        pet.style.transform = 'scale(1)';
+      });
+    });
+
+    // Typewriter Effect (Hero Title)
+    const heroTitle = document.querySelector('.hero-title');
+    const originalText = heroTitle.textContent;
+    heroTitle.textContent = '';
+    let idx = 0;
+    function type() {
+      if (idx < originalText.length) {
+        heroTitle.textContent += originalText.charAt(idx);
+        idx++;
+        setTimeout(type, 70);
+      }
+    }
+    setTimeout(type, 500);
+
+    // Back to Top Button
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backBtn.style.display = window.scrollY > 400 ? 'inline-block' : 'none';
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      backBtn.style.display = 'none';
+    });
+
+    // Page Fade-In on Load
+    // document.body.style.opacity = 0;
+    // document.body.style.transition = 'opacity 1s ease';
+    // window.addEventListener('load', () => {
+    //   document.body.style.opacity = 1;
+    // });
+
+    //Social Icons Spin
+    document.querySelectorAll('.social-icons a').forEach(icon => {
+      icon.addEventListener('click', e => {
+        e.preventDefault(); // prevent default nav
+        icon.style.transition = 'transform 0.6s';
+        icon.style.transform = 'rotate(360deg)';
+        setTimeout(() => {
+          icon.style.transform = 'rotate(0deg)';
+        }, 600);
+      });
+    });
+
+    // CTA Button Pulse Effect
+    const ctaBtn = document.querySelector('.cta-banner .btn');
+    ctaBtn.addEventListener('mouseenter', () => {
+      ctaBtn.style.transform = 'scale(1.08)';
+      ctaBtn.style.transition = 'transform 0.3s ease';
+    });
+    ctaBtn.addEventListener('mouseleave', () => {
+      ctaBtn.style.transform = 'scale(1)';
+    });
+
+    const appointmentModal = document.getElementById('appointmentModal');
+    const doctorNameInput = document.getElementById('doctorName');
+    const form = document.getElementById('appointmentForm');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+
+    appointmentModal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget;
+      const doctor = button.getAttribute('data-doctor');
+      doctorNameInput.value = doctor;
+      confirmationMessage.classList.add('d-none');
+      form.reset();
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const doctor = doctorNameInput.value;
+      confirmationMessage.textContent = `✅ Appointment confirmed with ${doctor}. Please visit the clinic at your selected time.`;
+      confirmationMessage.classList.remove('d-none');
+      form.style.display = 'none';
+    }); const doctorSpecialities = {
+      "Dr. Sarah Johnson": ["Dog", "Cat"],
+      "Dr. Ahmed Khan": ["Snake", "Lizard", "Iguana", "Tortoise", "Turtle", "Gecko", "Chameleon", "Frog", "Hedgehog", "Ferret"],
+      "Dr. Maria Ali": ["Parrot", "Pigeon", "Finch", "Canary", "Lovebird", "Cockatiel", "Budgie", "Hamster", "Guinea Pig", "Rabbit"],
+      "Dr. Ali Khan": ["Dog", "Cat", "Rabbit"],
+      "Dr. Sara Ahmed": ["Dog", "Cat", "Bird", "Rabbit", "Hamster"],
+      "Dr. Hamza Malik": ["Dog", "Cat", "Rabbit"],
+      "Dr. Ayesha Noor": ["Dog", "Cat", "Bird", "Hamster", "Rabbit"]
+    };
+
+    function openAppointment(doctorName) {
+      document.getElementById("doctorName").value = doctorName;
+
+      const petTypeSelect = document.getElementById("petType");
+      petTypeSelect.innerHTML = '<option value="">Select Pet Type</option>'; // reset options
+
+      if (doctorSpecialities[doctorName]) {
+        doctorSpecialities[doctorName].forEach(pet => {
+          const option = document.createElement("option");
+          option.value = pet;
+          option.textContent = pet;
+          petTypeSelect.appendChild(option);
+        });
+      }
+
+      const modal = new bootstrap.Modal(document.getElementById('appointmentModal'));
+      modal.show();
+    }
+
+    document.getElementById("appointmentForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // You can process form data here or send to backend
+      alert("Appointment booked successfully!");
+
+      // Reset form
+      document.getElementById("appointmentForm").reset();
+
+      // Close modal
+      const modal = bootstrap.Modal.getInstance(document.getElementById('appointmentModal'));
+      modal.hide();
+    });
+  </script>
+</body>
+
+</html>

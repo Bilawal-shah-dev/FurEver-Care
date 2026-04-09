@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurEver Care - Contact Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #081630;
+            --skyblue: #87CEEB;
+            --rose: #f9c6d0;
+            --black: #111;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            color: #000000;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(90deg, var(--navy), var(--black));
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--skyblue) !important;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0 4px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            color: #fff !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background: var(--skyblue);
+            color: var(--black) !important;
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-link.active {
+            background: rgba(249, 198, 208, 0.25);
+            color: var(--skyblue) !important;
+            font-weight: 600;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            background: url('/images/hero section.jpg') no-repeat center/cover;
+            background-attachment: fixed;
+            /* parallax effect */
+        }
+
+        /* Overlay */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 31, 68, 0.7);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-btn {
+            background: #87CEEB;
+            color: #111;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 30px;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hero-btn:hover {
+            background: #f9c6d0;
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .paw-prints {
+            margin-top: 25px;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            color: #fff;
+            opacity: 0.8;
+            animation: pawBounce 1.5s infinite alternate;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 3px solid var(--skyblue);
+        }
+
+        /* Form */
+        .contact-form input,
+        .contact-form textarea {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: #000;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            box-shadow: 0 0 5px var(--skyblue);
+        }
+
+        input:-webkit-autofill {
+    -webkit-text-fill-color: #000 !important;
+    box-shadow: 0 0 0px 1000px rgba(255,255,255,0.9) inset;
+}
+
+
+        .btn-submit {
+            background: var(--skyblue);
+            border: none;
+            font-weight: bold;
+            color: var(--black);
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--rose);
+            color: var(--black);
+        }
+
+        /* Info boxes */
+        .info-box {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+        }
+
+      /* Footer */
+    footer a {
+      color: var(--skyblue);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    .social-icons a {
+      color: var(--skyblue);
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #fff;
+      transform: scale(1.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .feature-card {
+        padding: 20px;
+      }
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <!--Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+  <img src="images/New folder/logo/logo 2.png" alt="FurEver Care Logo" height="50" width="100" class="me-2">
+  <i class="bi text-warning me-1"></i>
+  FurEver Care
+</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link " href="index.html"> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html"> About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="pet-care.html">Pet Care</a></li>
+          <li class="nav-item"><a class="nav-link" href="emergency.html"> Emergency</a></li>
+          <li class="nav-item"><a class="nav-link" href="shelter.html"> Shelter</a></li>
+          <li class="nav-item"><a class="nav-link" href="feedback.html"> Feedback</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title" data-aos="fade-down" data-aos-delay="400">Contact our team 🐾</h1>
+            <a href="about.html" class="hero-btn" data-aos="zoom-in" data-aos-delay="600">Explore More</a>
+            
+            <div class="paw-prints" data-aos="fade-up" data-aos-delay="800">
+                <i class="bi bi-paw"></i>
+                <i class="bi bi-paw"></i>
+                <i class="bi bi-paw"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <div class="container my-5">
+        <div class="row g-4">
+            <!-- Team -->
+            <div class="col-md-6">
+                <h3 class="mb-4 text-skyblue">Meet Our Team</h3>
+                <div class="d-flex flex-wrap gap-3">
+                    <div class="glass-card flex-fill text-center">
+                        <img src="images/Team/ayan.jpeg" class="avatar" alt="Team">
+                        <h5>Ayan Khan</h5>
+                        <p class="text-muted">Designer</p>
+                        <p><i class="bi bi-envelope"></i> Ayan@furever.com</p>
+                        <p><i class="bi bi-telephone"></i> +92 300 1234567</p>
+                    </div>
+                    <div class="glass-card flex-fill text-center">
+                        <img src="images/Team/bilawal.jpeg" class="avatar" alt="Team">
+                        <h5>Bilawal Shah</h5>
+                        <p class="text-muted">CEO</p>
+                        <p><i class="bi bi-envelope"></i> Bilawal@furever.com</p>
+                        <p><i class="bi bi-telephone"></i> +92 301 7654321</p>
+                    </div>
+                    <div class="glass-card flex-fill text-center">
+                        <img src="images/Team/iqra.jpeg" class="avatar" alt="Team">
+                        <h5>Iqra Malik</h5>
+                        <p class="text-muted">Adoption Manager</p>
+                        <p><i class="bi bi-envelope"></i> Iqra@furever.com</p>
+                        <p><i class="bi bi-telephone"></i> +92 301 7654321</p>
+                    </div>
+                    <!-- <div class="glass-card flex-fill text-center">
+                        <img src="images\download.jpeg" class="avatar" alt="Team">
+                        <h5>Husnain</h5>
+                        <p class="text-muted">Developer</p>
+                        <p><i class="bi bi-envelope"></i> ali@furever.com</p>
+                        <p><i class="bi bi-telephone"></i> +92 301 7654321</p>
+                    </div> -->
+                </div>
+            </div>
+            <!-- Form -->
+            <div class="col-md-6">
+                <h3 class="mb-4 text-skyblue">Send us a Message</h3>
+                <form class="glass-card contact-form">
+                    <div class="mb-3"><input type="text" class="form-control" placeholder="Your Name" required></div>
+                    <div class="mb-3"><input type="email" class="form-control" placeholder="Your Email" required></div>
+                    <div class="mb-3"><textarea class="form-control" rows="4" placeholder="Your Message"
+                            required></textarea></div>
+                    <button type="submit" class="btn btn-submit w-100">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Clock & Location -->
+        <div class="row mt-5 g-3">
+            <div class="col-md-6">
+                <div class="info-box" id="clockBox">
+                    <i class="bi bi-clock"></i>
+                    <h5 class="mt-2">Current Time</h5>
+                    <p id="clock">--:--:--</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="info-box">
+                    <i class="bi bi-geo-alt"></i>
+                    <h5 class="mt-2">Your Location</h5>
+                    <p id="location">Fetching...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!--Footer -->
+
+  <footer class="pt-5 pb-3" style="background: linear-gradient(90deg, #000000, #001f3f); color: #87CEFA;">
+    <div class="container">
+      <div class="row text-start">
+
+        <!--About -->
+        <div class="col-md-3 mb-4">
+          <div class="mb-2 d-flex align-items-center gap-2">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+  <img src="images/New folder/logo/logo 2.png" alt="FurEver Care Logo" height="50" width="100" class="me-2">
+  <!-- <i class="bi text-warning me-1"></i> -->
+  FurEver Care
+</a>
+          </div>
+          <p class="small mt-2">
+            The best overall dog DNA test. Embark Breed & Health Kit which provides complete dog care.
+          </p>
+        </div>
+
+        <!-- First Link Column -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold text-white mb-3">Company</h6>
+          <ul class="list-unstyled small">
+            <li><a href="about.html" class="text-light text-decoration-none">About Us</a></li>
+            <li><a href="products.html" class="text-light text-decoration-none">Products</a></li>
+            <li><a href="pet-care.html" class="text-light text-decoration-none">Pet Care</a></li>
+            <li><a href="emergency.html" class="text-light text-decoration-none">Emergency & Veterinarian</a></li>
+            <li><a href="shelter.html" class="text-light text-decoration-none">Shelter</a></li>
+          </ul>
+        </div>
+
+        <!-- Second Link Column -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold text-white mb-3">Resources</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#" class="text-light text-decoration-none">Invoicing Platform</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Accounting Platform</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Calculator</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Course Proposal</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Contracts</a></li>
+          </ul>
+        </div>
+
+        <!-- Instagram Preview -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold text-white mb-3">Social links</h6>
+          <div class="d-flex gap-2 mt-3">
+            <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border-color: rgba(255, 255, 255, 0.2);">
+
+      <!-- Bottom Line -->
+      <div class="text-center small mt-3">
+        <p class="mb-1">© 2025 FurEver Care | Designed for Aptech Project</p>
+        <p>Made by <i class="bi text-warning"></i> Syed Muhammad Bilawal Ali</p>
+        <a href="#" class="btn btn-sm btn-outline-light mt-2" onclick="window.scrollTo({top:0, behavior:'smooth'});">
+          Back to Top ↑
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+      <script>
+
+        AOS.init();
+
+    // Newsletter capture
+    function captureEmail(e) {
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail').value;
+      document.getElementById('newsletterMsg').innerText =
+        `✅ Thank you! ${email} has been subscribed.`;
+      e.target.reset();
+    }
+
+    AOS.init({
+      duration: 1200,
+      easing: 'ease-in-out',
+      once: true
+    });
+    // Initialize AOS
+    AOS.init({ once: true, duration: 1000 });
+
+    // Floating Paw Click Effect
+    document.addEventListener('click', e => {
+      const paw = document.createElement('div');
+      paw.textContent = '🐾';
+      paw.style.position = 'absolute';
+      paw.style.left = `${e.pageX}px`;
+      paw.style.top = `${e.pageY}px`;
+      paw.style.fontSize = '24px';
+      paw.style.animation = 'fadeUp 1s ease forwards';
+      document.body.appendChild(paw);
+      setTimeout(() => paw.remove(), 1000);
+    });
+
+    // Paw animation keyframe
+    const style = document.createElement('style');
+    style.textContent = `
+    @keyframes fadeUp {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-40px); }
+    }
+  `;
+    document.head.appendChild(style);
+
+    // Floating Pets Interactions
+    document.querySelectorAll('.floating-pet').forEach(pet => {
+      pet.addEventListener('click', () => {
+        alert(`Hi! I'm a friendly ${pet.alt}! 🐾`);
+      });
+      pet.addEventListener('mouseenter', () => {
+        pet.style.transform = 'scale(1.2)';
+        pet.style.transition = '0.3s';
+      });
+      pet.addEventListener('mouseleave', () => {
+        pet.style.transform = 'scale(1)';
+      });
+    });
+
+    // Typewriter Effect (Hero Title)
+    const heroTitle = document.querySelector('.hero-title');
+    const originalText = heroTitle.textContent;
+    heroTitle.textContent = '';
+    let idx = 0;
+    function type() {
+      if (idx < originalText.length) {
+        heroTitle.textContent += originalText.charAt(idx);
+        idx++;
+        setTimeout(type, 70);
+      }
+    }
+    setTimeout(type, 500);
+
+    // Back to Top Button
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backBtn.style.display = window.scrollY > 400 ? 'inline-block' : 'none';
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      backBtn.style.display = 'none';
+    });
+
+    // Page Fade-In on Load
+    // document.body.style.opacity = 0;
+    // document.body.style.transition = 'opacity 1s ease';
+    // window.addEventListener('load', () => {
+    //   document.body.style.opacity = 1;
+    // });
+
+    //Social Icons Spin
+    document.querySelectorAll('.social-icons a').forEach(icon => {
+      icon.addEventListener('click', e => {
+        e.preventDefault(); // prevent default nav
+        icon.style.transition = 'transform 0.6s';
+        icon.style.transform = 'rotate(360deg)';
+        setTimeout(() => {
+          icon.style.transform = 'rotate(0deg)';
+        }, 600);
+      });
+    });
+
+    // CTA Button Pulse Effect
+    const ctaBtn = document.querySelector('.cta-banner .btn');
+    ctaBtn.addEventListener('mouseenter', () => {
+      ctaBtn.style.transform = 'scale(1.08)';
+      ctaBtn.style.transition = 'transform 0.3s ease';
+    });
+    ctaBtn.addEventListener('mouseleave', () => {
+      ctaBtn.style.transform = 'scale(1)';
+    });
+
+        // Clock
+        setInterval(() => {
+            document.getElementById('clock').innerText = new Date().toLocaleTimeString();
+        }, 1000);
+
+        // Geolocation
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(pos => {
+                document.getElementById('location').innerText =
+                    `Lat: ${pos.coords.latitude.toFixed(2)}, Lng: ${pos.coords.longitude.toFixed(2)}`;
+            }, () => document.getElementById('location').innerText = "Permission denied.");
+        } else {
+            document.getElementById('location').innerText = "Not supported.";
+        }
+
+        // Form
+        document.querySelector('.contact-form').addEventListener('submit', e => {
+            e.preventDefault();
+            alert("Thank you! Your message has been recorded.");
+            e.target.reset();
+        });
+    </script>
+</body>
+
+</html>

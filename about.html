@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | FurEver</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    /* === Theme Colors === */
+    :root {
+      --navy: #081630;
+      --skyblue: #87CEEB;
+      --black: #111;
+      --rose: #f9c6d0;
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, var(--navy), var(--black));
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--skyblue) !important;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .navbar-nav .nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin: 0 4px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      color: #fff !important;
+    }
+
+    .navbar-nav .nav-link:hover {
+      background: var(--skyblue);
+      color: var(--black) !important;
+      transform: translateY(-2px);
+    }
+
+    .navbar-nav .nav-link.active {
+      background: rgba(249, 198, 208, 0.25);
+      color: var(--skyblue) !important;
+      font-weight: 600;
+    }
+    /*Hero Section*/
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+      background: url('/images/hero section.jpg') no-repeat center/cover;
+      background-attachment: fixed;
+      /* parallax effect */
+    }
+
+    /* Overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 31, 68, 0.7);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-btn {
+      background: #87CEEB;
+      color: #111;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 30px;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .hero-btn:hover {
+      background: #f9c6d0;
+      transform: translateY(-3px) scale(1.05);
+    }
+
+    /* Paw prints animation */
+    .paw-prints {
+      margin-top: 25px;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      color: #fff;
+      opacity: 0.8;
+      animation: pawBounce 1.5s infinite alternate;
+    }
+
+    @keyframes pawBounce {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Floating pets animation */
+    .floating-pet {
+      position: absolute;
+      width: 80px;
+      animation: float 6s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .floating-pet.cat {
+      top: 20%;
+      left: 10%;
+    }
+
+    .floating-pet.dog {
+      top: 50%;
+      left: 80%;
+    }
+
+    .floating-pet.bird {
+      top: 30%;
+      left: 50%;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(10deg);
+      }
+
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .floating-pet {
+        width: 50px;
+      }
+    }
+
+
+    /*Hero Section End*/
+
+    /* Our Story */
+    .story-section img {
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Mission & Vision */
+    .mv-card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+    }
+
+    .mv-card:hover {
+      transform: translateY(-6px);
+    }
+
+    /* Team */
+    .team-card {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+    }
+
+    .team-card:hover {
+      transform: scale(1.05);
+    }
+
+    .team-card img {
+      height: 400px;
+      object-fit: cover;
+    }
+
+    /* CTA */
+    .cta-banner {
+      background: linear-gradient(90deg, var(--navy), var(--black));
+      color: white;
+      padding: 60px 20px;
+      border-radius: 12px;
+    }
+
+   /* Footer */
+    footer a {
+      color: var(--skyblue);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    .social-icons a {
+      color: var(--skyblue);
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #fff;
+      transform: scale(1.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .feature-card {
+        padding: 20px;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .feature-card {
+        padding: 20px;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .feature-card {
+        padding: 20px;
+      }
+    }
+
+    /* ==== Added styles ==== */
+
+    .floating-pet:hover {
+      animation: bouncehover 0.6s ease;
+    }
+
+    @keyframes bouncehover {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      z-index: 999;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+ <!--Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+  <img src="images/New folder/logo/logo 2.png" alt="FurEver Care Logo" height="50" width="100" class="me-2">
+  <i class="bi text-warning me-1"></i>
+  FurEver Care
+</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link " href="index.html"> Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html"> About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="pet-care.html">Pet Care</a></li>
+          <li class="nav-item"><a class="nav-link" href="emergency.html"> Emergency</a></li>
+          <li class="nav-item"><a class="nav-link" href="shelter.html"> Shelter</a></li>
+          <li class="nav-item"><a class="nav-link" href="feedback.html"> Feedback</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!--Hero Section -->
+  <section class="hero">
+    <!-- Floating Pets -->
+    <img src="/images/hero cat png" alt="Cat" class="floating-pet cat" data-aos="fade-left" data-aos-delay="100"
+      data-aos-duration="1500">
+    <img src="/images/hero dog" alt="Dog" class="floating-pet dog" data-aos="fade-right" data-aos-delay="300"
+      data-aos-duration="1500">
+
+    <div class="hero-content">
+      <h1 class="hero-title" data-aos="fade-down" data-aos-delay="200">About - FurEver Care 🐾</h1>
+      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">Your one-stop solution for Pet Owners,
+        Veterinarians, and Shelters.</p>
+      <a href="products.html" class="hero-btn" data-aos="zoom-in" data-aos-delay="600">Explore More</a>
+      <div class="paw-prints" data-aos="fade-up" data-aos-delay="800">
+        <i class="bi bi-paw"></i>
+        <i class="bi bi-paw"></i>
+        <i class="bi bi-paw"></i>
+      </div>
+    </div>
+  </section>
+
+
+  <!--Our Story -->
+  <section class="story-section py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-4">
+          <h2 class="fw-bold mb-3">Our Story</h2>
+          <p>
+            At <b>FurEver</b>, we believe pets are more than companions—they’re family.
+            Started in 2022, our mission has been to provide quality care, products, and services
+            for pets everywhere. From nutrition to health, and from adoption to grooming,
+            FurEver is your trusted partner in every step of your pet journey.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <img src="images/about us cat banner.jpg" class="img-fluid" alt="Our Story">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Mission & Vision -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Mission & Vision</h2>
+        <p class="text-muted">What drives us forward every day</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card mv-card p-4">
+            <i class="bi bi-bullseye fs-1 text-primary mb-3"></i>
+            <h5 class="fw-bold">Our Mission</h5>
+            <p>To ensure every pet receives love, care, and a safe home by providing affordable
+              products and services that enhance their well-being.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mv-card p-4">
+            <i class="bi bi-eye fs-1 text-danger mb-3"></i>
+            <h5 class="fw-bold">Our Vision</h5>
+            <p>To become the most trusted global brand in pet care and adoption, uniting pet lovers
+              and animals across the world under one family.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Our Team -->
+  <section class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Meet Our Team</h2>
+        <p class="text-muted">The people who make FurEver possible</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card team-card text-center">
+            <img src="images/Team/ayan.jpeg" alt="Team Member">
+            <div class="p-3">
+              <h5 class="fw-bold">Ayan Khan</h5>
+              <p class="text-muted">Designer</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card team-card text-center">
+            <img src="images/Team/bilawal.jpeg" alt="Team Member">
+            <div class="p-3">
+              <h5 class="fw-bold">Bilawal Shah</h5>
+              <p class="text-muted">CEO</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card team-card text-center">
+            <img src="images/Team/iqra.jpeg" alt="Team Member">
+            <div class="p-3">
+              <h5 class="fw-bold">Iqra Malik</h5>
+              <p class="text-muted">Adoption Manager</p>
+            </div>
+          </div>
+        </div>
+         
+      </div>
+    </div>
+  </section>
+
+  <!--CTA -->
+  <section class="cta-banner my-5 text-center container">
+    <h2 class="fw-bold">Join Us in Making a Difference</h2>
+    <p>Together, we can provide love and homes to countless pets.</p>
+    <a href="contact.html" class="btn btn-outline-light btn-lg mt-3">Get Involved</a>
+  </section>
+
+
+  <!--Footer -->
+
+  <footer class="pt-5 pb-3" style="background: linear-gradient(90deg, #000000, #001f3f); color: #87CEFA;">
+    <div class="container">
+      <div class="row text-start">
+
+        <!--About -->
+        <div class="col-md-3 mb-4">
+          <div class="mb-2 d-flex align-items-center gap-2">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+  <img src="images/New folder/logo/logo 2.png" alt="FurEver Care Logo" height="50" width="100" class="me-2">
+  <!-- <i class="bi text-warning me-1"></i> -->
+  FurEver Care
+</a>
+          </div>
+          <p class="small mt-2">
+            The best overall dog DNA test. Embark Breed & Health Kit which provides complete dog care.
+          </p>
+        </div>
+
+        <!-- First Link Column -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold text-white mb-3">Company</h6>
+          <ul class="list-unstyled small">
+            <li><a href="about.html" class="text-light text-decoration-none">About Us</a></li>
+            <li><a href="products.html" class="text-light text-decoration-none">Products</a></li>
+            <li><a href="pet-care.html" class="text-light text-decoration-none">Pet Care</a></li>
+            <li><a href="emergency.html" class="text-light text-decoration-none">Emergency & Veterinarian</a></li>
+            <li><a href="shelter.html" class="text-light text-decoration-none">Shelter</a></li>
+          </ul>
+        </div>
+
+        <!-- Second Link Column -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold text-white mb-3">Resources</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#" class="text-light text-decoration-none">Invoicing Platform</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Accounting Platform</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Calculator</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Course Proposal</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Contracts</a></li>
+          </ul>
+        </div>
+
+        <!-- Instagram Preview -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold text-white mb-3">Social links</h6>
+          <div class="d-flex gap-2 mt-3">
+            <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border-color: rgba(255, 255, 255, 0.2);">
+
+      <!-- Bottom Line -->
+      <div class="text-center small mt-3">
+        <p class="mb-1">© 2025 FurEver Care | Designed for Aptech Project</p>
+        <p>Made by <i class="bi text-warning"></i> Syed Muhammad Bilawal Ali</p>
+        <a href="#" class="btn btn-sm btn-outline-light mt-2" onclick="window.scrollTo({top:0, behavior:'smooth'});">
+          Back to Top ↑
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  
+  <!-- External scripts included as before -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Added scripts for interactivity, no changes to your existing structure/HTML content -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // initialize AOS
+    AOS.init({
+      once: true,
+      duration: 1000
+    });
+
+    // floating pets hover bounce effect is handled via added CSS above
+
+    // Back to Top button behavior
+    const btnBack = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        btnBack.style.display = 'inline-block';
+      } else {
+        btnBack.style.display = 'none';
+      }
+    });
+    // Ensure it's hidden initially
+    document.addEventListener('DOMContentLoaded', () => {
+      btnBack.style.display = 'none';
+    });
+
+    // Initialize AOS
+    AOS.init({ once: true, duration: 1000 });
+
+    // ========================
+    // 🐾 Floating Paw Click Effect
+    // ========================
+    document.addEventListener('click', e => {
+      const paw = document.createElement('div');
+      paw.textContent = '🐾';
+      paw.style.position = 'absolute';
+      paw.style.left = `${e.pageX}px`;
+      paw.style.top = `${e.pageY}px`;
+      paw.style.fontSize = '24px';
+      paw.style.animation = 'fadeUp 1s ease forwards';
+      document.body.appendChild(paw);
+      setTimeout(() => paw.remove(), 1000);
+    });
+
+    // Paw animation keyframe
+    const style = document.createElement('style');
+    style.textContent = `
+    @keyframes fadeUp {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-40px); }
+    }
+  `;
+    document.head.appendChild(style);
+
+    // ========================
+    // 🐶 Floating Pets Interactions
+    // ========================
+    document.querySelectorAll('.floating-pet').forEach(pet => {
+      pet.addEventListener('click', () => {
+        alert(`Hi! I'm a friendly ${pet.alt}! 🐾`);
+      });
+      pet.addEventListener('mouseenter', () => {
+        pet.style.transform = 'scale(1.2)';
+        pet.style.transition = '0.3s';
+      });
+      pet.addEventListener('mouseleave', () => {
+        pet.style.transform = 'scale(1)';
+      });
+    });
+
+    // ========================
+    // ✨ Typewriter Effect (Hero Title)
+    // ========================
+    const heroTitle = document.querySelector('.hero-title');
+    const originalText = heroTitle.textContent;
+    heroTitle.textContent = '';
+    let idx = 0;
+    function type() {
+      if (idx < originalText.length) {
+        heroTitle.textContent += originalText.charAt(idx);
+        idx++;
+        setTimeout(type, 70);
+      }
+    }
+    setTimeout(type, 500); // slight delay
+
+    // ========================
+    // ⬆️ Back to Top Button
+    // ========================
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backBtn.style.display = window.scrollY > 400 ? 'inline-block' : 'none';
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      backBtn.style.display = 'none';
+    });
+
+    // ========================
+    // 💫 Page Fade-In on Load
+    // ========================
+    // document.body.style.opacity = 0;
+    // document.body.style.transition = 'opacity 1s ease';
+    // window.addEventListener('load', () => {
+    //   document.body.style.opacity = 1;
+    // });
+
+    // ========================
+    // 🎯 Social Icons Spin
+    // ========================
+    document.querySelectorAll('.social-icons a').forEach(icon => {
+      icon.addEventListener('click', e => {
+        e.preventDefault(); // prevent default nav
+        icon.style.transition = 'transform 0.6s';
+        icon.style.transform = 'rotate(360deg)';
+        setTimeout(() => {
+          icon.style.transform = 'rotate(0deg)';
+        }, 600);
+      });
+    });
+
+    // ========================
+    // 🧲 CTA Button Pulse Effect
+    // ========================
+    const ctaBtn = document.querySelector('.cta-banner .btn');
+    ctaBtn.addEventListener('mouseenter', () => {
+      ctaBtn.style.transform = 'scale(1.08)';
+      ctaBtn.style.transition = 'transform 0.3s ease';
+    });
+    ctaBtn.addEventListener('mouseleave', () => {
+      ctaBtn.style.transform = 'scale(1)';
+    });
+
+    
+  </script>
+</body>
+
+</html>
