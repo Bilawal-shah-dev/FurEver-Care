@@ -19,7 +19,7 @@
 ## 📸 Preview
 
 <p align="center">
-  <img src="https://via.placeholder.com/900x500.png?text=FurEver+Care+Preview" width="80%">
+  <img width="1349" height="596" alt="image" src="https://github.com/user-attachments/assets/de6c7205-9d8d-4e78-bd49-c65ac55289f2 ?text=FurEver+Care+Preview" width="80%">
 </p>
 
 ---
